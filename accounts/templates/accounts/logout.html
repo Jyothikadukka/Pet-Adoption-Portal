@@ -1,0 +1,71 @@
+{% extends 'adoption/base.html' %}
+
+
+
+{% block title %}
+Logged Out
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<section class="logout-page">
+
+
+<div class="logout-card">
+
+
+<div class="logout-icon">
+
+👋
+
+</div>
+
+
+
+<h1>
+
+You Have Been Logged Out
+
+</h1>
+
+
+
+<p>
+
+Thank you for visiting PetCare.
+
+</p>
+
+
+<p>
+
+We hope you find your perfect companion soon 🐾
+
+</p>
+
+
+
+
+<a href="{% url 'login' %}"
+class="btn logout-btn">
+
+Login Again
+
+</a>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+{% endblock %}

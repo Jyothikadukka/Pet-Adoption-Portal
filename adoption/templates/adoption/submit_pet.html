@@ -1,0 +1,286 @@
+{% extends 'adoption/base.html' %}
+
+{% block title %}
+Give Pet - PetCare
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- HERO SECTION -->
+
+<section class="give-pet-hero">
+
+<div class="container text-center">
+
+
+<h1>
+Give Your Pet A Second Chance ❤️
+</h1>
+
+
+<p>
+Help a loving pet find a forever home.
+Submit your pet details and our team will help.
+</p>
+
+
+
+<a href="#submit-form"
+class="btn adopt-btn">
+
+🐾 Give Pet
+
+</a>
+
+
+<a href="{% url 'my_submitted_pets' %}"
+class="btn submitted-btn">
+
+❤️ My Submitted Pets
+
+</a>
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!-- HOW IT WORKS -->
+
+
+<section class="how-work">
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+How It Works 🐾
+</h2>
+
+
+
+<div class="row mt-5">
+
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card">
+
+
+<h3>
+1️⃣
+</h3>
+
+
+<h4>
+Submit Details
+</h4>
+
+
+<p>
+Provide your pet information,
+photo, health details and address.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card">
+
+
+<h3>
+2️⃣
+</h3>
+
+
+<h4>
+Admin Review
+</h4>
+
+
+<p>
+Our team verifies the information
+and reviews your request.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card">
+
+
+<h3>
+3️⃣
+</h3>
+
+
+<h4>
+Find A Home
+</h4>
+
+
+<p>
+After approval, your pet becomes
+available for adoption.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- SUBMIT PET FORM -->
+
+
+<section class="submit-section submit-gap"
+id="submit-form">
+
+
+<div class="container">
+
+
+<div class="form-box">
+
+
+
+<h2 class="section-title">
+🐾 Submit Your Pet Details
+</h2>
+
+
+<form method="POST"
+enctype="multipart/form-data">
+
+
+{% csrf_token %}
+
+
+
+<div class="row">
+
+
+
+{% for field in form %}
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+
+{{field.label}}
+
+</label>
+
+
+{{field}}
+
+
+
+{% if field.errors %}
+
+<div class="text-danger">
+
+{{field.errors}}
+
+</div>
+
+
+{% endif %}
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+
+<div class="text-center">
+
+<button type="submit"
+class="btn donate-btn">
+
+Send Adoption Request ❤️
+
+</button>
+
+</div>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,318 @@
+{% extends 'adoption/base.html' %}
+
+
+
+{% block title %}
+
+{{ pet.name }} - PetCare
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+<section class="pet-details-page">
+
+
+<div class="container">
+
+
+
+<div class="row align-items-center">
+
+
+
+<!-- Pet Image -->
+
+
+<div class="col-lg-6">
+
+
+<div class="details-image-card">
+
+
+{% if pet.image %}
+
+
+<img src="{{ pet.image.url }}"
+class="details-image">
+
+
+{% endif %}
+
+
+
+<span class="details-badge">
+
+⭐ Available
+
+</span>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Pet Information -->
+
+
+<div class="col-lg-6">
+
+
+<div class="pet-details-content">
+
+
+
+<h1>
+
+🐾 {{ pet.name }}
+
+</h1>
+
+
+
+<h3>
+
+{{ pet.breed }}
+
+</h3>
+
+
+
+<div class="info-box">
+
+
+<div>
+
+🐶
+
+<strong>
+Category
+</strong>
+
+<p>
+{{pet.category}}
+</p>
+
+</div>
+
+
+
+
+<div>
+
+🎂
+
+<strong>
+Age
+</strong>
+
+<p>
+{{pet.age}}
+</p>
+
+</div>
+
+
+
+
+
+<div>
+
+⚥
+
+<strong>
+Gender
+</strong>
+
+<p>
+{{pet.gender}}
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<h4>
+About {{pet.name}}
+</h4>
+
+
+
+<p class="description">
+
+{{pet.description}}
+
+</p>
+
+
+
+
+
+
+<a href="{% url 'adopt_pet' pet.id %}"
+class="btn adopt-main-btn">
+
+❤️ Adopt {{pet.name}}
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- Similar Pets -->
+
+
+
+<section class="similar-section">
+
+
+<div class="container">
+
+
+
+<h2>
+
+More Lovely Pets 🐶🐱
+
+</h2>
+
+
+
+
+<div class="row mt-4">
+
+
+
+{% for pet in similar_pets %}
+
+
+
+
+<div class="col-lg-4 col-md-6 mb-4">
+
+
+<div class="similar-card">
+
+
+
+{% if pet.image %}
+
+
+<img src="{{pet.image.url}}" class="similar-image">
+
+
+{% endif %}
+
+
+
+
+<div class="similar-content">
+
+
+<h4>
+
+{{pet.name}}
+
+</h4>
+
+
+<p>
+
+{{pet.breed}}
+
+</p>
+
+
+
+<a href="{% url 'pet_details' pet.id %}"
+class="btn details-btn">
+
+View Details
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+<p>
+No similar pets available 🐾
+</p>
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

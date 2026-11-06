@@ -1,0 +1,429 @@
+{% extends 'adoption/base.html' %}
+
+
+{% block title %}
+Find Pets
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<section class="pet-page">
+
+
+<div class="container">
+
+
+
+<!-- Heading -->
+
+<div class="pet-header">
+
+
+<h1>
+🐾 Find Your Perfect Companion
+</h1>
+
+
+<p>
+Every pet deserves a loving home.
+</p>
+
+
+</div>
+
+
+
+
+
+<!-- Search Section -->
+
+
+<div class="search-card">
+
+
+<form method="GET">
+
+
+<div class="row g-3">
+
+
+
+<div class="col-md-5">
+
+
+<input 
+type="text"
+name="search"
+class="form-control"
+placeholder="🔍 Search pet name or breed"
+value="{{request.GET.search}}">
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3">
+
+
+<select 
+name="category"
+class="form-control">
+
+
+<option value="">
+All Categories
+</option>
+
+
+<option value="Dog">
+🐶 Dog
+</option>
+
+
+<option value="Cat">
+🐱 Cat
+</option>
+
+
+<option value="Bird">
+🐦 Bird
+</option>
+
+
+<option value="Rabbit">
+🐰 Rabbit
+</option>
+
+
+<option value="Hamster">
+🐹 Hamster
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-2">
+
+
+<select 
+name="gender"
+class="form-control">
+
+
+<option value="">
+Gender
+</option>
+
+
+<option value="Male">
+Male
+</option>
+
+
+<option value="Female">
+Female
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-2">
+
+
+<button class="btn search-btn w-100">
+
+
+Search 🔍
+
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+<!-- Pet Cards -->
+
+
+<div class="row mt-5">
+
+
+
+{% for pet in pets %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="modern-pet-card animate clickable-card"
+     data-url="{% url 'pet_details' pet.id %}">
+
+
+
+<div class="pet-image-box zoom-image">
+
+
+
+{% if pet.image %}
+
+
+<img src="{{ pet.image.url }}"
+class="pet-list-image">
+
+
+{% endif %}
+
+
+
+
+<span class="available-badge">
+
+Available ❤️
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<div class="pet-card-content">
+
+
+<h3>
+
+🐾 {{ pet.name }}
+
+</h3>
+
+
+
+<div class="pet-info">
+
+
+<p>
+
+<i class="bi bi-tag-fill"></i>
+
+{{ pet.breed }}
+
+</p>
+
+
+
+<p>
+
+<i class="bi bi-calendar-heart"></i>
+
+{{ pet.age }} Years
+
+</p>
+
+
+
+<p>
+
+<i class="bi bi-gender-ambiguous"></i>
+
+{{ pet.gender }}
+
+</p>
+
+
+
+<p>
+
+<i class="bi bi-grid-fill"></i>
+
+{{ pet.category }}
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="pet-actions">
+
+
+<a href="{% url 'pet_details' pet.id %}"
+   class="btn details-btn"
+   onclick="event.stopPropagation();">
+
+
+View Details
+
+
+</a>
+
+
+
+<a href="{% url 'adopt_pet' pet.id %}"
+   class="btn adopt-btn"
+   onclick="event.stopPropagation();">
+
+
+Adopt 🐾
+
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+{% empty %}
+
+
+
+<div class="text-center">
+
+<h3>
+No pets available 🐾
+</h3>
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+
+
+
+<!-- Pagination -->
+
+
+<nav>
+
+
+<ul class="pagination justify-content-center">
+
+
+
+{% if pets.has_previous %}
+
+<li class="page-item">
+
+<a class="page-link"
+href="?page={{pets.previous_page_number}}&search={{request.GET.search}}&category={{request.GET.category}}&gender={{request.GET.gender}}">
+
+Previous
+
+</a>
+
+</li>
+
+
+{% endif %}
+
+
+
+
+
+<li class="page-item active">
+
+<span class="page-link">
+
+{{pets.number}}
+
+</span>
+
+</li>
+
+
+
+
+
+{% if pets.has_next %}
+
+
+<li class="page-item">
+
+
+<a class="page-link"
+href="?page={{pets.next_page_number}}&search={{request.GET.search}}&category={{request.GET.category}}&gender={{request.GET.gender}}">
+
+Next
+
+</a>
+
+
+</li>
+
+
+{% endif %}
+
+
+
+</ul>
+
+
+</nav>
+
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

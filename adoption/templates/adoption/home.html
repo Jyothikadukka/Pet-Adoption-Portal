@@ -1,0 +1,879 @@
+{% extends 'adoption/base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+Home - PetCare
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<!-- Hero Carousel -->
+
+<!-- Hero Horizontal Slider -->
+
+<section class="hero-carousel">
+
+
+<div class="hero-wrapper">
+
+
+<!-- Slide 1 -->
+
+<div class="hero-slide">
+
+
+<div class="container">
+
+<div class="row align-items-center">
+
+
+<div class="col-md-6">
+
+
+<h1>
+Meet the Ones Who've Been
+<span>Waiting to Meet You </span>
+</h1>
+
+
+<p>
+Every wag, chirp, hop, and purr is waiting to become part of your story.
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<a href="{% url 'pet_list' %}"
+class="btn adopt-btn">
+
+❤️ Adopt Now
+
+</a>
+
+
+
+<a href="{% url 'pet_list' %}"
+class="btn explore-btn">
+
+🐾 Explore Pets
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="col-md-6 text-center">
+
+
+<img src="{% static 'images/slide1.png' %}"
+class="hero-image">
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Slide 2 -->
+
+
+<div class="hero-slide">
+
+
+<div class="container">
+
+<div class="row align-items-center">
+
+
+<div class="col-md-6">
+
+
+<h1>
+
+From Rescue to Home 🏡
+
+</h1>
+
+
+<p>
+
+Give a rescued companion the chance to leave the past behind and embrace a brighter tomorrow.
+
+</p>
+
+
+
+<div class="hero-buttons">
+
+
+<a href="{% url 'pet_list' %}"
+class="btn donate-btn">
+
+🐾 Rescue Pets
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-6 text-center">
+
+
+<img src="{% static 'images/savedog.png' %}"
+class="hero-image">
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Slide 3 -->
+
+
+<div class="hero-slide">
+
+
+<div class="container">
+
+<div class="row align-items-center">
+
+
+<div class="col-md-6">
+
+
+<h1>
+
+Love Without Words ✨
+
+</h1>
+
+
+
+<p>
+
+Because the strongest bonds are often felt, not spoken.
+
+</p>
+
+
+
+
+<div class="hero-buttons">
+
+
+<a href="{% url 'pet_list' %}"
+class="btn adopt-btn">
+
+❤️ Find Pets
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-6 text-center">
+
+
+<img src="{% static 'images/slide3.png' %}"
+class="hero-image">
+
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<!-- Arrows -->
+
+
+<button class="hero-prev" id="heroPrev">
+
+❮
+
+</button>
+
+
+
+<button class="hero-next" id="heroNext">
+
+❯
+
+</button>
+
+
+
+</section>
+
+
+
+
+<!-- Featured Pets -->
+
+
+<section class="featured">
+
+
+<div class="container">
+
+
+<h2>
+Featured Pets
+</h2>
+
+
+
+<div class="row mt-4">
+
+
+{% for pet in pets|slice:":3" %}
+
+
+
+<div class="col-md-4">
+
+
+<div class="pet-card animate">
+
+
+<img src="{{pet.image.url}}"
+class="pet-image">
+
+
+
+<div class="card-body">
+
+
+<h4>
+🐶 {{pet.name}}
+</h4>
+
+
+<p>
+{{pet.breed}}
+</p>
+
+
+
+<a href="{% url 'pet_details' pet.id %}"
+class="btn details-btn">
+
+View Details
+
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- Save A Pet Section -->
+
+<section class="save-pet">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+
+<div class="col-md-6">
+
+<img src="{% static 'images/savedog.png' %}"
+class="save-image"
+alt="Save a Pet">
+
+
+</div>
+
+
+
+<div class="col-md-6">
+
+
+<h2>
+Save A Pet ❤️
+</h2>
+
+
+<h3>
+Find Your Perfect Companion:
+<br>
+Adopt, Don't Shop
+</h3>
+
+
+<p>
+
+Welcome to a World of Unconditional Love.
+
+</p>
+
+
+<p>
+
+At PetCare, we believe in the transformative power
+of pet adoption. Each day, countless animals are
+waiting for their forever homes, and you can be
+part of their beautiful journey.
+
+</p>
+
+
+
+<a href="{% url 'pet_list' %}"
+class="btn donate-btn">
+
+🐾 DONATE NOW
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+<!-- Why Adopt Section -->
+
+
+<section class="why-adopt">
+
+
+<div class="container">
+
+
+<h2>
+Why Choose Adoption?
+</h2>
+
+
+<div class="row mt-4">
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card animate">
+
+
+<h3>
+❤️
+</h3>
+
+<h4>
+Save Lives
+</h4>
+
+
+<p>
+Give abandoned pets a chance.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card animate">
+
+
+<h3>
+🏠
+</h3>
+
+
+<h4>
+Loving Homes
+</h4>
+
+
+<p>
+Provide pets with a safe family.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="feature-card animate">
+
+
+<h3>
+🐾
+</h3>
+
+
+<h4>
+Happy Companions
+</h4>
+
+
+<p>
+Build a beautiful bond forever.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- About Section -->
+
+<section class="about-parallax">
+
+<div class="about-bg"></div>
+
+<div class="container about-content">
+
+<h2 data-aos="fade-down">
+About PetCare
+</h2>
+
+<p
+class="about-subtitle"
+data-aos="fade-up">
+
+Connecting loving families with pets waiting for their forever homes.
+
+</p>
+
+<div class="row mt-5">
+
+<div
+class="col-md-4"
+data-aos="fade-right">
+
+<div class="about-card">
+
+<div class="about-icon">❤️</div>
+
+<h3>Our Vision</h3>
+
+<p>
+We dream of a world where every rescued pet finds a loving family.
+</p>
+
+</div>
+
+</div>
+
+<div
+class="col-md-4"
+data-aos="zoom-in">
+
+<div class="about-card">
+
+<div class="about-icon">🐾</div>
+
+<h3>Our Mission</h3>
+
+<p>
+We connect caring families with homeless pets.
+</p>
+
+</div>
+
+</div>
+
+<div
+class="col-md-4"
+data-aos="fade-left">
+
+<div class="about-card">
+
+<div class="about-icon">🏡</div>
+
+<h3>Our Values</h3>
+
+<p>
+Compassion, trust and lifelong companionship.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- Counter Section -->
+
+<section class="counter-section">
+
+<div class="container">
+
+<div class="row text-center">
+
+
+<div class="col-md-3">
+
+<h2 class="counter" data-target="500">
+0
+</h2>
+
+<p>
+🐶 Pets Rescued
+</p>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<h2 class="counter" data-target="350">
+0
+</h2>
+
+<p>
+❤️ Successful Adoptions
+</p>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<h2 class="counter" data-target="200">
+0
+</h2>
+
+<p>
+🏠 Happy Families
+</p>
+
+</div>
+
+
+
+<div class="col-md-3">
+
+<h2 class="counter" data-target="50">
+0
+</h2>
+
+<p>
+🐾 Volunteers
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Testimonials -->
+
+
+<section class="testimonials">
+
+
+<div class="container">
+
+
+<h2>
+What Pet Parents Say ❤️
+</h2>
+
+
+
+<div class="row mt-4">
+
+
+
+<div class="col-md-4">
+
+
+<div class="testimonial-card">
+
+
+<p>
+"Adopting Bruno changed our life.
+He became a part of our family."
+</p>
+
+
+<h5>
+- Jyothika
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="testimonial-card">
+
+
+<p>
+"The adoption process was simple
+and the team was very supportive."
+</p>
+
+
+<h5>
+- Rahul
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-4">
+
+
+<div class="testimonial-card">
+
+
+<p>
+"Every pet deserves love.
+Thank you PetCare."
+</p>
+
+
+<h5>
+- Priya
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- Contact Section -->
+
+
+<section class="contact-section">
+
+
+<div class="container">
+
+
+<h2>
+Contact Us
+</h2>
+
+
+
+<div class="row">
+
+
+<div class="col-md-6">
+
+
+<h4>
+🐾 PetCare Adoption Center
+</h4>
+
+
+<p>
+📍 Andhra Pradesh, India
+</p>
+
+
+<p>
+📞 +91 98765 43210
+</p>
+
+
+<p>
+✉️ support@petcare.com
+</p>
+
+
+</div>
+
+
+
+<div class="col-md-6">
+
+
+<form>
+
+
+<input 
+class="form-control mb-3"
+placeholder="Your Name">
+
+
+
+<input 
+class="form-control mb-3"
+placeholder="Email">
+
+
+
+<textarea
+class="form-control mb-3"
+placeholder="Message"></textarea>
+
+
+
+<button class="btn donate-btn">
+
+Send Message
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+{% endblock %}

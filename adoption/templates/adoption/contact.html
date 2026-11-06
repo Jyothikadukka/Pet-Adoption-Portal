@@ -1,0 +1,294 @@
+{% extends 'adoption/base.html' %}
+
+
+
+{% block title %}
+
+Contact Us
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+<section class="contact-page">
+
+
+<div class="container">
+
+
+
+<div class="contact-header">
+
+
+<h1>
+
+📞 Contact PetCare
+
+</h1>
+
+
+<p>
+
+Have questions about adoption?
+We would love to hear from you 🐾
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="row mt-5">
+
+
+
+
+
+<!-- Contact Information -->
+
+
+<div class="col-lg-5">
+
+
+
+<div class="contact-info-card animate">
+
+
+<h3>
+
+🐾 Get In Touch
+
+</h3>
+
+
+
+<div class="contact-item">
+
+
+<h5>
+📍 Location
+</h5>
+
+
+<p>
+PetCare Adoption Center
+India
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="contact-item">
+
+
+<h5>
+📧 Email
+</h5>
+
+
+<p>
+support@petcare.com
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="contact-item">
+
+
+<h5>
+📞 Phone
+</h5>
+
+
+<p>
++91 98765 43210
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Contact Form -->
+
+
+<div class="col-lg-7">
+
+
+
+<div class="contact-form-card animate">
+
+
+
+<h3>
+
+Send Us A Message
+
+</h3>
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-success">
+
+{{ message }}
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+
+
+<div class="mb-3">
+
+
+<label>
+
+Name
+
+</label>
+
+
+<input
+type="text"
+name="name"
+class="form-control"
+placeholder="Enter your name"
+required>
+
+
+</div>
+
+
+
+
+
+<div class="mb-3">
+
+
+<label>
+
+Email
+
+</label>
+
+
+<input
+type="email"
+name="email"
+class="form-control"
+placeholder="Enter your email"
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="mb-3">
+
+
+<label>
+
+Message
+
+</label>
+
+
+<textarea
+name="message"
+class="form-control"
+rows="5"
+placeholder="Write your message"
+required></textarea>
+
+
+</div>
+
+
+
+
+
+<button
+type="submit"
+class="contact-btn">
+
+Send Message 🐾
+
+</button>
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+{% endblock %}

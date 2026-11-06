@@ -1,0 +1,103 @@
+{% extends "adoption/base.html" %}
+
+{% block title %}
+My Submitted Pets
+{% endblock %}
+
+{% block content %}
+
+<section class="submitted-pets py-5">
+
+<div class="container">
+
+
+<h2 class="text-center mb-5">
+❤️ My Submitted Pets
+</h2>
+
+
+{% if pets %}
+
+<div class="row">
+
+{% for pet in pets %}
+
+<div class="col-md-6 col-lg-4 mb-4">
+
+<div class="submitted-card">
+
+<img src="{{ pet.image.url }}" class="submitted-image">
+
+<div class="submitted-body">
+
+<h4>{{ pet.pet_name }}</h4>
+
+<p>
+<strong>Breed:</strong>
+{{ pet.breed }}
+</p>
+
+<p>
+<strong>Category:</strong>
+{{ pet.category.name }}
+</p>
+
+<p>
+<strong>Age:</strong>
+{{ pet.age }} 
+</p>
+
+<p>
+<strong>Submitted:</strong>
+{{ pet.submitted_at|date:"d M Y" }}
+</p>
+
+{% if pet.status == "Pending" %}
+
+<span class="badge bg-warning text-dark">
+🟡 Pending
+</span>
+
+{% elif pet.status == "Approved" %}
+
+<span class="badge bg-success">
+🟢 Approved
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+🔴 Rejected
+</span>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="text-center">
+
+<h4>No pets submitted yet.</h4>
+
+<a href="{% url 'submit_pet' %}" class="btn donate-btn mt-3">
+Submit Your First Pet
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</section>
+
+{% endblock %}

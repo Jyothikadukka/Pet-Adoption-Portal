@@ -1,0 +1,436 @@
+{% extends 'adoption/base.html' %}
+
+
+
+{% block title %}
+My Profile
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+
+<section class="profile-page">
+
+
+<div class="container">
+
+
+
+<div class="profile-card">
+
+
+
+
+
+<!-- Profile Header -->
+
+
+<div class="profile-header">
+
+
+<div class="profile-icon">
+
+👤
+
+</div>
+
+
+
+<h1>
+
+{{ user.username }}
+
+</h1>
+
+
+
+<p>
+
+PetCare Member 🐾
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Profile Information -->
+
+<div class="profile-info">
+
+
+<!-- Username -->
+
+<div class="profile-item">
+
+
+<div class="profile-title">
+
+
+<span>
+👤 Username
+</span>
+
+
+<button type="button"
+class="edit-btn"
+onclick="showUsernameEdit()">
+
+Edit ✏️
+
+</button>
+
+
+</div>
+
+
+<h4>
+{{ user.username }}
+</h4>
+
+
+
+<div id="username-edit"
+style="display:none;">
+
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{user_form.username}}
+
+
+<button 
+name="user_update"
+type="submit"
+class="btn profile-btn mt-2">
+
+Save
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+<!-- Email -->
+
+<div class="profile-item">
+
+
+<div class="profile-title">
+
+
+<span>
+📧 Email
+</span>
+
+
+<button type="button"
+class="edit-btn"
+onclick="showEmailEdit()">
+
+Edit ✏️
+
+</button>
+
+
+</div>
+
+
+<h4>
+{{ user.email }}
+</h4>
+
+
+
+<div id="email-edit"
+style="display:none;">
+
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{user_form.email}}
+
+
+<button 
+name="user_update"
+type="submit"
+class="btn profile-btn mt-2">
+
+Save
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+<!-- Phone -->
+
+<div class="profile-item">
+
+
+<div class="profile-title">
+
+<span>
+📱 Phone Number
+</span>
+
+
+<button type="button" 
+class="edit-btn"
+onclick="showPhoneEdit()">
+
+Edit ✏️
+
+</button>
+
+
+</div>
+
+
+
+<h4 id="phone-display">
+
+{% if profile.phone %}
+
+{{profile.phone}}
+
+{% else %}
+
+Not Added
+
+{% endif %}
+
+</h4>
+
+
+
+<div id="phone-edit" style="display:none;">
+
+
+<form method="POST">
+
+{% csrf_token %}
+
+
+{{form.phone}}
+
+
+<button 
+name="phone_update"
+type="submit"
+class="btn profile-btn mt-2">
+
+Save
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- Status -->
+
+
+<div class="profile-item">
+
+
+<div>
+
+<span>
+✅ Account Status
+</span>
+
+
+<h4>
+Active
+</h4>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Requests -->
+
+
+<div class="profile-item">
+
+
+<div>
+
+<span>
+🐾 Adoption Requests
+</span>
+
+
+<h4>
+{{ requests.count }}
+</h4>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- Adoption Summary -->
+
+
+<div class="profile-summary">
+
+
+<h3>
+
+My Adoption Activity
+
+</h3>
+
+
+
+<p>
+
+You have submitted
+
+<strong>
+{{ requests.count }}
+</strong>
+
+adoption request(s).
+
+</p>
+
+
+
+<a href="{% url 'dashboard' %}"
+class="btn profile-btn">
+
+View Dashboard 📊
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+<script>
+
+function showPhoneEdit(){
+
+    let editBox = document.getElementById("phone-edit");
+
+    if(editBox.style.display === "none"){
+
+        editBox.style.display = "block";
+
+    }
+    else{
+
+        editBox.style.display = "none";
+
+    }
+
+}
+
+</script>
+<script>
+
+
+function showUsernameEdit(){
+
+let box=document.getElementById("username-edit");
+
+box.style.display =
+box.style.display==="none"
+?"block":"none";
+
+}
+
+
+
+function showEmailEdit(){
+
+let box=document.getElementById("email-edit");
+
+box.style.display =
+box.style.display==="none"
+?"block":"none";
+
+}
+
+
+
+function showPhoneEdit(){
+
+let box=document.getElementById("phone-edit");
+
+box.style.display =
+box.style.display==="none"
+?"block":"none";
+
+}
+
+
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends 'adoption/base.html' %}
+
+
+{% block title %}
+Adopt {{ pet.name }}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<section class="adopt-page">
+
+
+<div class="container">
+
+
+<div class="row align-items-center">
+
+
+
+<!-- Pet Preview -->
+
+
+<div class="col-lg-5">
+
+
+<div class="adopt-pet-card">
+
+
+
+{% if pet.image %}
+
+<img src="{{ pet.image.url }}"
+class="details-image">
+
+{% endif %}
+
+
+
+<h2>
+
+🐾 {{pet.name}}
+
+</h2>
+
+
+<p>
+
+{{pet.breed}}
+
+</p>
+
+
+<div class="pet-mini-info">
+
+
+<span>
+🎂 {{pet.age}}
+</span>
+
+
+<span>
+⚥ {{pet.gender}}
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Adoption Form -->
+
+
+<div class="col-lg-7">
+
+
+<div class="adopt-form-card">
+
+
+
+<h1>
+
+❤️ Adopt {{pet.name}}
+
+</h1>
+
+
+
+<p>
+
+Give {{pet.name}} a loving forever home.
+
+</p>
+
+
+
+
+
+<form method="POST">
+
+
+{% csrf_token %}
+
+
+
+
+<label>
+
+Why do you want to adopt?
+
+</label>
+
+
+
+<textarea
+
+name="message"
+
+class="form-control adopt-textarea"
+
+placeholder="Tell us why you want to adopt this pet..."
+required>
+
+</textarea>
+
+
+
+
+
+<button type="submit"
+class="adopt-submit-btn">
+
+
+🐾 Submit Adoption Request
+
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}
