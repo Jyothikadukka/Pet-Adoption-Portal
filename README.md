@@ -103,6 +103,17 @@ http://127.0.0.1:8000/
 
 The main objective of this project is to simplify the pet adoption process by providing an accessible platform where users can discover pets, request adoptions, and connect with the adoption management system.
 
+## 📸 Screenshots
+
+### Homepage
+![Homepage](homepage.png)
+
+### Pet Listings
+![Pet Listings](pets.png)
+
+### Dashboard
+![Dashboard](dashboard.png)
+
 ## 👩‍💻 Developer
 
 **Dukka Jyothika**
